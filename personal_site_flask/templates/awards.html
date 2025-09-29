@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% set title="Awards" %}
+{% block content %}
+<h1 class="mb-4">Awards</h1>
+<div class="row g-4">
+  {% for a in awards %}
+  <div class="col-md-6 col-lg-4">
+    <div class="card h-100">
+      <div class="card-body">
+        <h5 class="card-title mb-1">{{ a.title }}</h5>
+        <div class="text-muted small mb-2">{{ a.organization }} · {{ a.date }}</div>
+        <p class="card-text">{{ a.description }}</p>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+{% endblock %}

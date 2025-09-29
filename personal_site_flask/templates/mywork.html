@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% set title="My Work" %}
+{% block content %}
+<h1 class="mb-4">My Work</h1>
+<div class="row g-4">
+  {% for p in projects %}
+  <div class="col-md-6">
+    <div class="card h-100">
+      <div class="card-body">
+        <h5 class="card-title">{{ p.title }}</h5>
+        <p class="card-text">{{ p.summary }}</p>
+        {% if p.tech %}
+        <div class="mb-2">
+          {% for tag in p.tech %}
+          <span class="badge text-bg-light border me-1">{{ tag }}</span>
+          {% endfor %}
+        </div>
+        {% endif %}
+        {% if p.link and p.link != "#" %}
+        <a href="{{ p.link }}" class="btn btn-sm btn-outline-primary" target="_blank" rel="noopener">View</a>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+{% endblock %}

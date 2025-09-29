@@ -1,0 +1,33 @@
+/* Minimal custom styles */
+body { font-feature-settings: "ss01" on, "liga" on; }
+.profile-img { max-width: 280px; width: 100%; border-radius: 1.25rem; }
+.testimonial blockquote { font-size: 1.05rem; line-height: 1.6; }
+.navbar .nav-link.active { font-weight: 600; }
+.card { border-radius: 1rem; }
+.btn { border-radius: .75rem; }
+
+/* Testimonials emphasis */
+.carousel .blockquote {
+  font-size: 1.15rem;
+  line-height: 1.6;
+}
+.card blockquote {
+  font-style: italic;
+}
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1; /* pushes footer down */
+}
+
+footer {
+  margin-top: auto;
+}
