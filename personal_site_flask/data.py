@@ -34,7 +34,7 @@ TESTIMONIALS = [
     {
         "name": "Roopa Desai",
         "role": "Owner of Kumon North America at Carol Stream",
-        "quote": "NA"
+        "quote": "I had the pleasure of working with Krishna at our Kumon Math and Reading Center, where he consistently went above and beyond to help countless students of all backgrounds succeed. Krishna’s ability to meet each student where they were, and then scaffold their learning to ensure understanding, made him an invaluable part of our team. His solution-focused approach and dedication to helping every student reach their academic goals set him apart. Krishna’s exceptional tech skills and natural ability to adapt to diverse learning needs truly make him a standout individual."
     },
     {
         "name": "Santiago Rubio",
@@ -119,7 +119,9 @@ PROJECTS = {
             "title": "kptutorsat",
             "summary": "Short SAT math and reading walkthroughs + tips for students to score 1500+",
             "platform": "TikTok",
-            "link": "https://www.tiktok.com/@kptutorsat?is_from_webapp=1&sender_device=pc"
+            "link": "https://www.tiktok.com/@kptutorsat?is_from_webapp=1&sender_device=pc",
+            "image": "tiktok.png"
+            
         },
     
     ],

@@ -5,24 +5,50 @@
 
 <!-- Social Media -->
 <h2 class="mt-5 mb-3">Social Media</h2>
-<div class="row g-4">
+<div class="social-media-projects">
   {% for s in projects.social_media %}
-  <div class="col-md-6">
-    <div class="card project-card h-100 rounded-4">
-      <div class="card-body">
-        <h5 class="card-title mb-1">{{ s.title }}</h5>
-        <p class="card-text">{{ s.summary }}</p>
-        {% if s.platform %}
-          <div class="mb-2"><span class="chip">{{ s.platform }}</span></div>
-        {% endif %}
-        {% if s.link and s.link != "#" %}
-          <a href="{{ s.link }}" class="btn btn-sm btn-gradient" target="_blank" rel="noopener">View</a>
-        {% endif %}
+  <div class="mb-4 pb-4 border-bottom">
+    <div class="row g-4 align-items-stretch">
+      <div class="col-md-6">
+        <div class="card project-card rounded-4 h-100 overflow-hidden">
+
+          <!-- Image at top of card -->
+          {% if s.image %}
+          <img
+            src="{{ url_for('static', filename='img/' ~ s.image) }}"
+            class="card-img-top"
+            alt="{{ s.title }} image"
+            loading="lazy"
+            style="object-fit: contain; max-height: 250px; background-color: #ffffff;">
+          {% endif %}
+
+          <div class="card-body">
+            <h5 class="card-title mb-1">{{ s.title }}</h5>
+            <p class="card-text">{{ s.summary }}</p>
+
+            {% if s.platform %}
+            <div class="mb-3">
+              <span class="chip me-1 mb-1">{{ s.platform }}</span>
+            </div>
+            {% endif %}
+
+            {% if s.link and s.link != "#" %}
+            <div class="d-flex flex-wrap gap-2">
+              <a href="{{ s.link }}" class="btn btn-sm btn-gradient" target="_blank" rel="noopener">View</a>
+            </div>
+            {% endif %}
+          </div>
+        </div>
       </div>
     </div>
   </div>
   {% endfor %}
 </div>
+
+
+
+
+
 
 <!-- Coding Projects (card left, media right) -->
 <h2 class="mt-5 mb-3">Coding Projects</h2>
