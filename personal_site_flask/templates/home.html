@@ -1,46 +1,69 @@
 {% extends "base.html" %}
 {% set title="Home" %}
 {% block content %}
-<div class="row align-items-center g-5">
-  <!-- Left column: text + testimonials -->
-  <div class="col-lg-7">
-    <h1 class="display-5 fw-bold mb-3">Hi, I’m Krishna</h1>
-    <p class="lead">description.</p>
 
-    <div class="mt-4 small text-muted">
-      Woodstock, IL · 
-      <a href="mailto:kpatel6607@gmail.com">kpatel6607@gmail.com</a> · 
-      <a href="https://www.linkedin.com/" target="_blank" rel="noopener">LinkedIn</a>
-    </div>
+{% set tlist = testimonials if testimonials is defined else [] %}
 
-    <!-- Testimonials Preview Carousel -->
-    <h2 class="mt-5 mb-3">What Do People Say About Me?</h2>
-    <div id="testimonialCarousel" class="carousel slide" data-bs-ride="carousel">
-      <div class="carousel-inner">
-        {% for t in testimonials %}
-        <div class="carousel-item {% if loop.first %}active{% endif %}">
-          <blockquote class="blockquote text-center">
-            <p class="mb-3">“{{ t.quote }}”</p>
-            <footer class="blockquote-footer">{{ t.name }} — <cite>{{ t.role }}</cite></footer>
-          </blockquote>
-        </div>
-        {% endfor %}
+<section class="hero gradient-card p-4 p-lg-5 rounded-4 shadow-sm">
+  <div class="row align-items-center g-5">
+    <!-- Left column: intro + CTAs -->
+    <div class="col-lg-7">
+      <div class="eyebrow mb-2">Student · Entrepenuer · Tech Builder</div>
+      <h1 class="display-5 fw-extrabold lh-tight mb-3 brand-gradient-text">Hi, I’m Krishna — I...</h1>
+      <p class="lead opacity-90">
+       Krishna is a student at 
+      </p>
+      <div class="d-flex flex-wrap gap-2 mt-3">
+        <a href="/mywork" class="btn btn-gradient">See My Work</a>
+        <a href="/awards" class="btn btn-outline-light btn-ghost">Awards</a>
+        <a href="/testimonials" class="btn btn-outline-light btn-ghost">Testimonials</a>
       </div>
-      <button class="carousel-control-prev" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="prev">
-        <span class="carousel-control-prev-icon"></span>
-      </button>
-      <button class="carousel-control-next" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="next">
-        <span class="carousel-control-next-icon"></span>
-      </button>
+      <ul class="list-inline small mt-4 mb-0 text-light-contrast">
+        <li class="list-inline-item me-3">Woodstock, IL</li>
+        <li class="list-inline-item me-3"><a class="link-underline" href="mailto:kpatel6607@gmail.com">kpatel6607@gmail.com</a></li>
+        <li class="list-inline-item"><a class="link-underline" href="https://www.linkedin.com/" target="_blank" rel="noopener">LinkedIn</a></li>
+      </ul>
     </div>
-    <div class="mt-3 text-center">
-      <a href="/testimonials" class="btn btn-outline-dark btn-sm">See All Testimonials →</a>
-    </div>
-  </div>
 
-  <!-- Right column: image -->
-  <div class="col-lg-5 text-center">
-    <img class="profile-img shadow-sm" src="{{ url_for('static', filename='img/profile.svg') }}" alt="Profile picture of Krishna">
+    <!-- Right column: image with colorful ring -->
+    <div class="col-lg-5 text-center">
+      <div class="profile-ring mx-auto">
+        <img class="profile-img" src="{{ url_for('static', filename='img/headshot.png') }}" alt="Profile picture of Krishna">
+      </div>
+    </div>
   </div>
-</div>
+</section>
+
+
+
+<!-- Testimonials Preview (only if available) -->
+{% if tlist and tlist|length > 0 %}
+<section class="mt-5">
+  <h2 class="mb-3">What Do People Say About Me?</h2>
+  <div id="testimonialCarousel" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner">
+      {% for t in tlist %}
+      <div class="carousel-item {% if loop.first %}active{% endif %}">
+        <blockquote class="blockquote text-center">
+          <p class="mb-3">“{{ t.quote }}”</p>
+          <footer class="blockquote-footer">{{ t.name }} — <cite>{{ t.role }}</cite></footer>
+        </blockquote>
+      </div>
+      {% endfor %}
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="next">
+      <span class="carousel-control-next-icon"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+  <div class="mt-3 text-center">
+    <a href="/testimonials" class="btn btn-outline-dark btn-sm">See All Testimonials →</a>
+  </div>
+</section>
+{% endif %}
+
 {% endblock %}

@@ -1,23 +1,127 @@
 {% extends "base.html" %}
 {% set title="My Work" %}
 {% block content %}
-<h1 class="mb-4">My Work</h1>
+<h1 class="mb-4 brand-gradient-text">My Work</h1>
+
+<!-- Social Media -->
+<h2 class="mt-5 mb-3">Social Media</h2>
 <div class="row g-4">
-  {% for p in projects %}
+  {% for s in projects.social_media %}
   <div class="col-md-6">
-    <div class="card h-100">
+    <div class="card project-card h-100 rounded-4">
       <div class="card-body">
-        <h5 class="card-title">{{ p.title }}</h5>
-        <p class="card-text">{{ p.summary }}</p>
-        {% if p.tech %}
-        <div class="mb-2">
-          {% for tag in p.tech %}
-          <span class="badge text-bg-light border me-1">{{ tag }}</span>
-          {% endfor %}
-        </div>
+        <h5 class="card-title mb-1">{{ s.title }}</h5>
+        <p class="card-text">{{ s.summary }}</p>
+        {% if s.platform %}
+          <div class="mb-2"><span class="chip">{{ s.platform }}</span></div>
         {% endif %}
-        {% if p.link and p.link != "#" %}
-        <a href="{{ p.link }}" class="btn btn-sm btn-outline-primary" target="_blank" rel="noopener">View</a>
+        {% if s.link and s.link != "#" %}
+          <a href="{{ s.link }}" class="btn btn-sm btn-gradient" target="_blank" rel="noopener">View</a>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+
+<!-- Coding Projects (card left, media right) -->
+<h2 class="mt-5 mb-3">Coding Projects</h2>
+<div class="coding-projects">
+  {% for p in projects.coding_projects %}
+  {% set gallery_id = 'gallery-' ~ loop.index %}
+
+  <div class="mb-4 pb-4 border-bottom">
+    <div class="row g-4 align-items-stretch">
+      <!-- Left: the card -->
+      <div class="col-md-6">
+        <div class="card project-card rounded-4 h-100">
+          <div class="card-body">
+            <h5 class="card-title mb-1">{{ p.title }}</h5>
+            <p class="card-text">{{ p.summary }}</p>
+
+            {% if p.tech %}
+            <div class="mb-3">
+              {% for tag in p.tech %}
+              <span class="chip me-1 mb-1">{{ tag }}</span>
+              {% endfor %}
+            </div>
+            {% endif %}
+
+            <div class="d-flex flex-wrap gap-2">
+              {% if p.link and p.link != "#" %}
+              <a href="{{ p.link }}" class="btn btn-sm btn-gradient" target="_blank" rel="noopener">GitHub</a>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: media (video or image carousel) -->
+      {% if p.video %}
+      <div class="col-md-6 d-flex align-items-center">
+        <div class="ratio ratio-16x9 w-100 shadow-sm rounded-3">
+          <video controls muted playsinline preload="metadata"
+                 onvolumechange="this.muted=true"
+                 style="border-radius: 0.75rem;">
+            <source src="{{ url_for('static', filename='videos/' ~ p.video) }}" type="video/mp4">
+          </video>
+        </div>
+      </div>
+
+      {% elif p.images and p.images|length > 0 %}
+      <div class="col-md-6">
+        <div id="{{ gallery_id }}" class="carousel slide project-gallery" data-bs-ride="false">
+          <div class="carousel-inner rounded-3 overflow-hidden shadow-sm">
+            {% for img in p.images %}
+            <div class="carousel-item {% if loop.first %}active{% endif %}">
+              <img
+                src="{{ url_for('static', filename='img/' ~ img) }}"
+                class="d-block w-100"
+                alt="{{ p.title }} screenshot {{ loop.index }}"
+                loading="lazy">
+            </div>
+            {% endfor %}
+          </div>
+          {% if p.images|length > 1 %}
+          <button class="carousel-control-prev" type="button" data-bs-target="#{{ gallery_id }}" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#{{ gallery_id }}" data-bs-slide="next">
+            <span class="carousel-control-next-icon"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+          {% endif %}
+        </div>
+      </div>
+      {% endif %}
+    </div>
+  </div>
+  {% endfor %}   {# ✅ close the for-loop for coding_projects #}
+</div>
+<div class="text-center mt-4">
+  <a href="https://github.com/gershinho?tab=repositories"
+     target="_blank"
+     rel="noopener"
+     class="btn btn-lg btn-outline-dark rounded-pill shadow-sm">
+    See All Projects →
+  </a>
+</div>
+
+<!-- Clubs -->
+<h2 class="mt-5 mb-3">Clubs</h2>
+<div class="row g-4">
+  {% for c in projects.clubs %}
+  <div class="col-md-6">
+    <div class="card project-card h-100 rounded-4">
+      <div class="card-body">
+        <h5 class="card-title mb-1">{{ c.title }}</h5>
+        <p class="card-text">{{ c.summary }}</p>
+        {% if c.role %}<span class="chip">{{ c.role }}</span>{% endif %}
+        {% if c.link and c.link != "#" %}
+          <div class="mt-3">
+            <a href="{{ c.link }}" class="btn btn-sm btn-gradient" target="_blank" rel="noopener">View</a>
+          </div>
         {% endif %}
       </div>
     </div>
