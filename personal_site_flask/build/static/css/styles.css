@@ -1,0 +1,311 @@
+:root {
+  --bg: #f8fafc;        /* light background */
+  --text: #0f172a;      /* dark navy text */
+  --muted: #475569;     /* gray for secondary text */
+  --card: #ffffff;      /* white for cards */
+
+  /* MAIN BRAND COLORS */
+  --brand-1: #2563eb;   /* blue-600 */
+  --brand-2: #3b82f6;   /* blue-500 */
+  --brand-3: #60a5fa;   /* blue-400 */
+
+  --ring: rgba(37, 99, 235, 0.25);
+}
+
+
+
+/* ---- Base & layout ---- */
+html, body {
+  height: 100%;
+  margin: 0;
+}
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-feature-settings: "ss01" on, "liga" on;
+  display: flex;
+  flex-direction: column;
+}
+main { flex: 1; }         /* pushes footer down */
+footer { margin-top: auto; }
+
+/* ---- Navbar (glass effect) ---- */
+.navbar-glass {
+  background: rgba(255,255,255,.6);
+  backdrop-filter: saturate(160%) blur(10px);
+  border-bottom: 1px solid rgba(0,0,0,.06);
+}
+:root[data-theme="dark"] .navbar-glass {
+  background: rgba(15,23,42,.6);
+  border-color: rgba(255,255,255,.06);
+}
+.navbar .nav-link.active { font-weight: 700; }
+
+/* ---- Brand flair ---- */
+.brand-gradient,
+.brand-gradient-text {
+  color: var(--text); /* simple solid text */
+}
+
+/* ---- Decorative background blobs ---- */
+.bg-blob {
+  position: fixed;
+  filter: blur(60px);
+  opacity: .35;
+  z-index: -1;
+  pointer-events: none;
+}
+.bg-blob-1 { width: 460px; height: 460px; top: -120px; right: -120px; background: radial-gradient(circle at 30% 30%, var(--brand-2), transparent 60%); }
+.bg-blob-2 { width: 520px; height: 520px; bottom: -160px; left: -160px; background: radial-gradient(circle at 70% 70%, var(--brand-1), transparent 60%); }
+:root[data-theme="dark"] .bg-blob { opacity: .25; }
+
+/* ---- Hero & buttons ---- */
+.gradient-card {
+  background: var(--card); /* softer: white card */
+  color: var(--text);      /* dark text for readability */
+  border: 1px solid rgba(0,0,0,.06);
+  border-radius: 1.25rem;
+  box-shadow: 0 4px 20px rgba(0,0,0,.05);
+  max-width: 1000px;   /* or 900px, play with this */
+  margin: 0 auto; 
+}
+.gradient-card:before {
+  pointer-events: none;
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(800px 300px at 80% -10%, rgba(255,255,255,.18), transparent 60%);
+}
+.btn-gradient {
+  background: linear-gradient(90deg, var(--brand-1), var(--brand-2));
+  color: #fff;
+  border: none;
+  box-shadow: 0 8px 20px rgba(124,58,237,.25);
+}
+.btn-gradient:hover { opacity: .96; }
+
+.btn-ghost {
+  backdrop-filter: blur(6px);
+  border-color: rgba(255,255,255,.85);
+  color: #fff;
+}
+
+.eyebrow { letter-spacing: .12em; text-transform: uppercase; font-weight: 700; opacity: .9; }
+
+/* ---- Profile image ring ---- */
+.profile-ring {
+  padding: .75rem;
+  border-radius: 2rem;
+  background: conic-gradient(from 180deg, var(--brand-1), var(--brand-2), var(--brand-3), var(--brand-1));
+  box-shadow: 0 10px 30px var(--ring);
+  display: inline-block;
+}
+
+/* Your original profile image rule (kept, slightly refined) */
+.profile-img { 
+  max-width: 600px; 
+  width: 100%; 
+  border-radius: 1.25rem; 
+  background:#fff; 
+  display:block; 
+}
+
+/* ---- Cards & hover motion ---- */
+.card, .mini-card, .quote-card, .timeline-card {
+  background: var(--card);
+  border: 1px solid rgba(0,0,0,.06);
+  border-radius: 1rem;
+}
+:root[data-theme="dark"] .card,
+:root[data-theme="dark"] .mini-card,
+:root[data-theme="dark"] .quote-card,
+:root[data-theme="dark"] .timeline-card {
+  border-color: rgba(255,255,255,.06);
+}
+.mini-card:hover, .card.project-card:hover, .quote-card:hover, .timeline-card:hover {
+  transform: translateY(-2px);
+  transition: transform .2s ease, box-shadow .2s ease;
+  box-shadow: 0 14px 30px rgba(0,0,0,.08);
+}
+
+/* Keep your original rounded buttons */
+.btn { border-radius: .75rem; }
+
+/* ---- Projects: “chips” & sparkle ---- */
+.chip {
+  display: inline-block;
+  padding: .35rem .6rem;
+  border-radius: 999px;
+  background: rgba(6,182,212,.12);
+  border: 1px solid rgba(6,182,212,.25);
+  font-size: .8rem;
+}
+.project-card .sparkle { filter: drop-shadow(0 6px 10px rgba(245,158,11,.35)); }
+
+/* ---- Awards timeline ---- */
+.timeline { position: relative; margin-left: .5rem; }
+.timeline:before {
+  content:"";
+  position: absolute;
+  left: 9px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(var(--brand-1), var(--brand-2));
+  opacity: .5;
+}
+.timeline-item { position: relative; padding-left: 2rem; margin-bottom: 1.25rem; }
+.timeline-dot {
+  position: absolute; left: 0; top: .6rem;
+  width: 18px; height: 18px; border-radius: 50%;
+  background: linear-gradient(var(--brand-1), var(--brand-2));
+  box-shadow: 0 0 0 6px var(--ring);
+}
+
+/* ---- Testimonials ---- */
+.quote-card { position: relative; }
+.quote-card .quote-mark {
+  position: absolute;
+  top: -6px; left: 14px;
+  font-size: 3rem; line-height: 1; opacity: .2;
+  background: linear-gradient(90deg, var(--brand-1), var(--brand-2));
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+}
+
+/* Keep your existing testimonial emphasis selectors */
+.carousel .blockquote {
+  font-size: 1.15rem;
+  line-height: 1.6;
+}
+.card blockquote { font-style: italic; }
+
+.project-gallery {
+  padding: 0.001rem;  
+  border-radius: .75rem;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+}
+
+/* Project gallery image sizing */
+.project-gallery .carousel-item img {
+  height: 400px;     /* adjust as you like */
+  object-fit: contain;   /* fills the frame without distortion */
+  background: #f8fafc;
+}
+
+/* ---- Links ---- */
+.link-underline {
+  text-decoration: none;
+  background-image: linear-gradient(currentColor, currentColor);
+  background-position: 0% 100%;
+  background-repeat: no-repeat;
+  background-size: 0% 2px;
+  transition: background-size .2s ease;
+  color: inherit;
+}
+.link-underline:hover { background-size: 100% 2px; }
+
+
+/* Make carousel arrows black */
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  filter: invert(1) grayscale(100); /* turns white icons black */
+}
+
+/* Carousel indicator dots */
+.carousel-indicators [data-bs-target] {
+  background-color: #000;   /* base color (black) */
+  width: 10px;              /* size */
+  height: 10px;
+  border-radius: 50%;
+}
+
+.carousel-indicators .active {
+  background-color: #2563eb;  /* active color (blue, or pick your brand color) */
+}
+
+.project-gallery video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: .75rem;
+}
+
+video::-webkit-media-controls-volume-slider,
+video::-webkit-media-controls-mute-button,
+video::-webkit-media-controls-volume-control-container {
+  display: none !important;
+}
+
+.social-media-projects img {
+  margin-top: 12px; /* lower image slightly */
+  object-fit: contain;
+  width: 100%;
+  height: 250px;
+
+  border-radius: 0.7rgb(255, 251, 251)
+}
+
+.press-strip {
+  display: inline-flex;
+  align-items: center;
+  gap: .6rem;
+  padding: .5rem .8rem;
+  border: 1px solid rgba(125, 140, 200, 0.25);
+  background: linear-gradient(180deg, rgba(124,156,255,.12), rgba(124,156,255,.06));
+  font-size: .95rem;
+}
+
+.press-label {
+  opacity: .8;
+  font-weight: 500;
+}
+
+.press-link {
+  font-weight: 600;
+  text-decoration: none;
+  color: var(--bs-body-color);
+}
+
+.press-link:hover {
+  text-decoration: underline;
+}
+
+.press-card {
+  background: linear-gradient(180deg, rgba(124,156,255,.08), rgba(124,156,255,.03));
+  transition: transform .1s ease, box-shadow .1s ease;
+}
+
+.press-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0,0,0,.08);
+}
+
+.press-link {
+  color: inherit;
+}
+
+.press-link:hover {
+  text-decoration: underline;
+}
+
+
+.press-mini {
+  font-size: 0.75rem;
+  border-color: rgba(0,0,0,.1);
+  padding: 0.25rem 0.45rem;
+  transition: transform .1s ease, box-shadow .1s ease;
+}
+.press-mini:hover {
+  transform: translateY(-1px);
+  text-decoration: none;
+  box-shadow: 0 2px 6px rgba(0,0,0,.08);
+}
+.press-mini svg {
+  margin-top: -1px;
+}
+
+
+/* ---- Utility tweaks ---- */
+.text-light-contrast { color: rgba(255,255,255,.9); }
+.lh-tight { line-height: 1.08; }
+.fw-extrabold { font-weight: 800; }
