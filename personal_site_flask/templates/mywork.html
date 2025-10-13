@@ -100,7 +100,8 @@
 <h2 class="mt-5 mb-3">Coding Projects</h2>
 <div class="coding-projects">
   {% for p in projects.coding_projects %}
-  {% set gallery_id = 'gallery-' ~ loop.index %}
+  {# make id unique and stable using index + sanitized title #}
+  {% set gallery_id = ('gallery-' ~ loop.index ~ '-' ~ (p.title|lower|replace(' ', '-')|replace("'", '')|replace('"',''))) %}
 
   <div class="mb-4 pb-4 border-bottom">
     <div class="row g-4 align-items-stretch">
@@ -157,7 +158,7 @@
 
       {% elif p.images and p.images|length > 0 %}
       <div class="col-md-6">
-        <div id="{{ gallery_id }}" class="carousel slide project-gallery" data-bs-ride="false">
+        <div id="{{ gallery_id }}" class="carousel slide project-gallery" data-bs-ride="false" data-bs-touch="true">
           <div class="carousel-inner rounded-3 overflow-hidden shadow-sm">
             {% for img in p.images %}
             <div class="carousel-item {% if loop.first %}active{% endif %}">
@@ -169,13 +170,14 @@
             </div>
             {% endfor %}
           </div>
+
           {% if p.images|length > 1 %}
           <button class="carousel-control-prev" type="button" data-bs-target="#{{ gallery_id }}" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon"></span>
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
             <span class="visually-hidden">Previous</span>
           </button>
           <button class="carousel-control-next" type="button" data-bs-target="#{{ gallery_id }}" data-bs-slide="next">
-            <span class="carousel-control-next-icon"></span>
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
             <span class="visually-hidden">Next</span>
           </button>
           {% endif %}
@@ -196,24 +198,4 @@
   </a>
 </div>
 
-<!-- Clubs
-<h2 class="mt-5 mb-3">Clubs</h2>
-<div class="row g-4">
-  {% for c in projects.clubs %}
-  <div class="col-md-6">
-    <div class="card project-card h-100 rounded-4">
-      <div class="card-body">
-        <h5 class="card-title mb-1">{{ c.title }}</h5>
-        <p class="card-text">{{ c.summary }}</p>
-        {% if c.role %}<span class="chip">{{ c.role }}</span>{% endif %}
-        {% if c.link and c.link != "#" %}
-          <div class="mt-3">
-            <a href="{{ c.link }}" class="btn btn-sm btn-gradient" target="_blank" rel="noopener">View</a>
-          </div>
-        {% endif %}
-      </div>
-    </div>
-  </div>
-  {% endfor %}
-</div>
-{% endblock %} -->
+{% endblock %}

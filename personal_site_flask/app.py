@@ -22,7 +22,7 @@ def awards():
 def testimonials():
     return render_template("testimonials.html", testimonials=TESTIMONIALS)
 
-@app.route("/mywork/")
+@app.route("/my-work/")
 def projects():
     return render_template("mywork.html", projects=PROJECTS)
 
