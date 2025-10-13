@@ -2,6 +2,8 @@ from flask import Flask, render_template
 from data import AWARDS, TESTIMONIALS, PROJECTS
 
 app = Flask(__name__)
+app.url_map.strict_slashes = False
+
 
 @app.context_processor
 def inject_now():
