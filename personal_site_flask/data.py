@@ -24,7 +24,7 @@ TESTIMONIALS = [
     {
         "name": "Vikas Goyal",
         "role": "Computer Science Mentor",
-        "quote": "NA"
+        "quote": "What sets Krishna apart is his constant curiosity and drive to learn. He actively seeks new knowledge, asks insightful questions, and iterates with intention."
     },
     {
         "name": "John Liuzzi",
@@ -37,9 +37,9 @@ TESTIMONIALS = [
         "quote": "I had the pleasure of working with Krishna at our Kumon Math and Reading Center, where he consistently went above and beyond to help countless students of all backgrounds succeed. Krishna’s ability to meet each student where they were, and then scaffold their learning to ensure understanding, made him an invaluable part of our team. His solution-focused approach and dedication to helping every student reach their academic goals set him apart. Krishna’s exceptional tech skills and natural ability to adapt to diverse learning needs truly make him a standout individual."
     },
     {
-        "name": "Santiago Rubio",
-        "role": "Spain First Level National Soccer and High School Coach",
-        "quote": "NA"
+        "name": "Michael Dost",
+        "role": "High School Soccer Coach",
+        "quote": "As captain of the soccer team, Krishna led with heart and skill. Our team was made up of players from all kinds of backgrounds, and he had this rare ability to make everyone feel seen and valued.  Under his leadership, the team grew more connected, disciplined, and confident both on and off the field."
     },
 ]
 
@@ -116,13 +116,40 @@ PROJECTS = {
     ],
     "social_media": [
         {
-            "title": "kptutorsat",
-            "summary": "Short SAT math and reading walkthroughs + tips for students to score 1500+",
-            "platform": "TikTok",
-            "link": "https://www.tiktok.com/@kptutorsat?is_from_webapp=1&sender_device=pc",
-            "image": "tiktok.png"
-            
+        "title": "kptutorsat",
+        "summary": " SAT math and reading walkthroughs, tips for students to score 1500+, relatable SAT tiktoks, etc.",
+        "platform": "TikTok",
+        "link": "https://www.tiktok.com/@kptutorsat?is_from_webapp=1&sender_device=pc",
+        "image": "tiktok.png"
+        }
+    ],
+    "music": [
+        {
+        "title": "Music Album for Cousin’s Graduation — Summer 25'",
+        "summary": "16-year-old Krishna Patel's music album gift to Mansi Patel.\n***NOTE*** Disregard parental advisory image on album cover, ALL MUSIC IS KID FRIENDLY",
+        "platform": "YouTube",
+        "link": "https://www.youtube.com/watch?v=ZgqzLJwoPgc&list=PLVMMQ00owvrHZNnaPLFkV3QU97HFoZJKt&pp=gAQB",
+        "image": "album.png"
         },
     
+        {
+        "title": "Rap Music from Middle School Years",
+        "summary": "Krishna's old kid-friendly rap music with bestfriend Eshaan.\n***NOTE*** Cringey, listen at your own risk",
+        "platform": "YouTube",
+        "link": "https://www.youtube.com/@lildonkxlilpigvids4807/videos",
+        "image": "meandegg.png"
+        },
+
+        {
+        "title": "Spotify Playlists — Dutch, Carribbean, Spanish, and More",
+        "summary": "Check out my love for foreign music through my perfectly curated playlists!",
+        "platform": "Spotify",
+        "link": "https://open.spotify.com/user/zh6yigk3zphm8c7j7gv2ml2wg?si=26f528662c6f4e16",
+        "image": "spotify.png"
+        }
     ],
 }
+
+   
+
+

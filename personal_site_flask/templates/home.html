@@ -8,10 +8,10 @@
   <div class="row align-items-center g-5">
     <!-- Left column: intro + CTAs -->
     <div class="col-lg-7">
-      <div class="eyebrow mb-2">Student · Entrepenuer · Tech Builder</div>
-      <h1 class="display-5 fw-extrabold lh-tight mb-3 brand-gradient-text">Hi, I’m Krishna </h1>
+      <div class="eyebrow mb-2">Student · Entrepreneur · Tech Builder</div>
+      <h1 class="display-5 fw-extrabold lh-tight mb-3 brand-gradient-text">Hi, I’m Krishna</h1>
       <p class="lead opacity-90">
-       Krishna is a student at Woodstock High School.
+        Krishna is a student at Woodstock High School.
       </p>
       <div class="d-flex flex-wrap gap-2 mt-3">
         <a href="/awards" class="btn btn-outline-light btn-ghost">Awards</a>
@@ -29,11 +29,31 @@
       <div class="profile-ring mx-auto">
         <img class="profile-img" src="{{ url_for('static', filename='img/headshot.png') }}" alt="Profile picture of Krishna">
       </div>
+
+      <!-- Featured Press Card -->
+      <div class="mt-4 d-inline-block">
+        <div class="card press-card shadow-sm border-0 rounded-4 text-start mx-auto" style="max-width: 320px;">
+          <div class="card-body py-3 px-4">
+            <div class="d-flex align-items-center">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                   class="bi bi-newspaper me-2 text-primary" viewBox="0 0 16 16">
+                <path d="M0 2a2 2 0 0 1 2-2h11a1 1 0 0 1 1 1v13a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2Zm3 1v11a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V3H3Z"/>
+                <path d="M8 5h3v1H8V5ZM8 7h3v1H8V7ZM8 9h3v1H8V9ZM3 5h4v5H3V5Z"/>
+              </svg>
+              <div>
+                <div class="fw-semibold small text-uppercase text-muted">Featured in</div>
+                <a href="https://www.thewoodstockindependent.com/2025/04/whs-students-picked-for-google-showcase/"
+                   target="_blank" rel="noopener" class="fw-semibold text-decoration-none press-link">
+                  The Woodstock Independent
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
-
-
 
 <!-- Testimonials Preview (only if available) -->
 {% if tlist and tlist|length > 0 %}

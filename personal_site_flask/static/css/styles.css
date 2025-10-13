@@ -245,6 +245,66 @@ video::-webkit-media-controls-volume-control-container {
   border-radius: 0.7rgb(255, 251, 251)
 }
 
+.press-strip {
+  display: inline-flex;
+  align-items: center;
+  gap: .6rem;
+  padding: .5rem .8rem;
+  border: 1px solid rgba(125, 140, 200, 0.25);
+  background: linear-gradient(180deg, rgba(124,156,255,.12), rgba(124,156,255,.06));
+  font-size: .95rem;
+}
+
+.press-label {
+  opacity: .8;
+  font-weight: 500;
+}
+
+.press-link {
+  font-weight: 600;
+  text-decoration: none;
+  color: var(--bs-body-color);
+}
+
+.press-link:hover {
+  text-decoration: underline;
+}
+
+.press-card {
+  background: linear-gradient(180deg, rgba(124,156,255,.08), rgba(124,156,255,.03));
+  transition: transform .1s ease, box-shadow .1s ease;
+}
+
+.press-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0,0,0,.08);
+}
+
+.press-link {
+  color: inherit;
+}
+
+.press-link:hover {
+  text-decoration: underline;
+}
+
+
+.press-mini {
+  font-size: 0.75rem;
+  border-color: rgba(0,0,0,.1);
+  padding: 0.25rem 0.45rem;
+  transition: transform .1s ease, box-shadow .1s ease;
+}
+.press-mini:hover {
+  transform: translateY(-1px);
+  text-decoration: none;
+  box-shadow: 0 2px 6px rgba(0,0,0,.08);
+}
+.press-mini svg {
+  margin-top: -1px;
+}
+
+
 /* ---- Utility tweaks ---- */
 .text-light-contrast { color: rgba(255,255,255,.9); }
 .lh-tight { line-height: 1.08; }
