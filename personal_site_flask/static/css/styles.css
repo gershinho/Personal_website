@@ -341,42 +341,45 @@ video::-webkit-media-controls-volume-control-container {
 /* ===== Testimonial carousel sizing & wrapping ===== */
 :root { --tc-ctrl-w: 3.75rem; } /* wider side hit-area on sm+ so text never collides */
 
-#testimonialCarousel .carousel-item blockquote {
-  padding-left: var(--tc-ctrl-w);
-  padding-right: var(--tc-ctrl-w);
-}
-
-#testimonialCarousel blockquote p {
-  white-space: normal;
-  word-break: break-word;
-  overflow-wrap: anywhere;
-  hyphens: auto;
-  -webkit-hyphens: auto;
-}
-
-#testimonialCarousel blockquote {
-  margin: 0 auto;
-  max-width: 42rem;
-}
-
-/* Overlay arrows (tablet/desktop) get the same wider width */
-#testimonialCarousel .carousel-control-prev,
-#testimonialCarousel .carousel-control-next {
-  width: var(--tc-ctrl-w);
-}
-
-/* On phones: no overlay arrows -> reduce padding so text is centered nicely */
+/* ---- Fix mobile overlap: move arrows fully outside text ---- */
 @media (max-width: 575.98px) {
+  /* increase padding so text stays centered and readable */
   #testimonialCarousel .carousel-item blockquote {
-    padding-left: 1rem;
-    padding-right: 1rem;
+    padding: 0 1.5rem; /* even margins */
+  }
+
+  /* push the desktop arrows outside the quote area */
+  #testimonialCarousel .carousel-control-prev,
+  #testimonialCarousel .carousel-control-next {
+    width: 2rem;
+    top: 100%; /* move them below the quote */
+    transform: translateY(-50%);
+    position: absolute;
+  }
+
+  /* space arrows apart horizontally */
+  #testimonialCarousel .carousel-control-prev {
+    left: 25%;
+  }
+  #testimonialCarousel .carousel-control-next {
+    right: 25%;
+  }
+
+  /* optional: make the icons slightly smaller on mobile */
+  #testimonialCarousel .carousel-control-prev-icon,
+  #testimonialCarousel .carousel-control-next-icon {
+    width: 1.25rem;
+    height: 1.25rem;
+  }
+}
+/* make sure the arrows position relative to the carousel and have room below */
+@media (max-width: 575.98px) {
+  #testimonialCarousel { 
+    position: relative;        /* safety: anchor abs-positioned arrows */
+    padding-bottom: 2.25rem;   /* space for the moved arrows */
   }
 }
 
-/* Optional: subtle spacing above mobile control bar */
-#testimonialCarousel .carousel-controls-mobile {
-  margin-top: .25rem;
-}
 
 
 /* ---- Utility tweaks ---- */
