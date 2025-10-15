@@ -12,8 +12,6 @@
   --ring: rgba(37, 99, 235, 0.25);
 }
 
-
-
 /* ---- Base & layout ---- */
 html, body {
   height: 100%;
@@ -61,8 +59,9 @@ footer { margin-top: auto; }
 
 /* ---- Hero & buttons ---- */
 .gradient-card {
-  background: var(--card); /* softer: white card */
-  color: var(--text);      /* dark text for readability */
+  position: relative;         /* ensure :before overlays correctly */
+  background: var(--card);    /* softer: white card */
+  color: var(--text);         /* dark text for readability */
   border: 1px solid rgba(0,0,0,.06);
   border-radius: 1.25rem;
   box-shadow: 0 4px 20px rgba(0,0,0,.05);
@@ -179,6 +178,43 @@ footer { margin-top: auto; }
 }
 .card blockquote { font-style: italic; }
 
+/* --- iOS-safe carousel/text wrapping for testimonials --- */
+#testimonialCarousel .carousel-item blockquote {
+  padding-left: 3rem;   /* space for prev arrow hit area */
+  padding-right: 3rem;  /* space for next arrow hit area */
+}
+
+#testimonialCarousel blockquote p {
+  white-space: normal;
+  word-break: break-word;   /* fallback */
+  overflow-wrap: anywhere;  /* modern */
+  hyphens: auto;
+  -webkit-hyphens: auto;    /* iOS Safari */
+}
+
+#testimonialCarousel blockquote {
+  margin: 0 auto;
+  max-width: 42rem;         /* keeps lines readable on tablets */
+}
+
+/* Slimmer arrow hit areas so they don't cover text */
+#testimonialCarousel .carousel-control-prev,
+#testimonialCarousel .carousel-control-next {
+  width: 2.5rem;            /* Bootstrap default is 15% */
+}
+
+@media (max-width: 576px) {
+  #testimonialCarousel .carousel-item blockquote {
+    padding-left: 2.25rem;
+    padding-right: 2.25rem;
+  }
+  #testimonialCarousel .carousel-control-prev,
+  #testimonialCarousel .carousel-control-next {
+    width: 2rem;
+  }
+}
+
+/* ---- Project gallery ---- */
 .project-gallery {
   padding: 0.001rem;  
   border-radius: .75rem;
@@ -203,7 +239,6 @@ footer { margin-top: auto; }
   color: inherit;
 }
 .link-underline:hover { background-size: 100% 2px; }
-
 
 /* Make carousel arrows black */
 .carousel-control-prev-icon,
@@ -288,7 +323,6 @@ video::-webkit-media-controls-volume-control-container {
   text-decoration: underline;
 }
 
-
 .press-mini {
   font-size: 0.75rem;
   border-color: rgba(0,0,0,.1);
@@ -302,6 +336,65 @@ video::-webkit-media-controls-volume-control-container {
 }
 .press-mini svg {
   margin-top: -1px;
+}
+
+/* --- Awards: Year header --- */
+.timeline-year {
+  position: sticky;
+  top: 70px; /* adjust for your navbar height */
+  z-index: 2;
+  font-weight: 800;
+  letter-spacing: .04em;
+  margin: 1.25rem 0 .5rem 0.25rem;
+  padding-left: .5rem;
+  opacity: .7;
+}
+.bg-year { background: transparent; }
+
+/* --- Awards: Icons & featured flair --- */
+.award-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px; height: 26px;
+  border-radius: 8px;
+  background: rgba(37,99,235,.08);
+  color: var(--brand-1);
+}
+
+.dot-featured {
+  background: linear-gradient(135deg, #f59e0b, #f97316);
+  box-shadow: 0 0 0 8px rgba(249,115,22,.15);
+}
+
+.featured-glow {
+  position: relative;
+  border: 1px solid rgba(249,115,22,.35);
+  box-shadow: 0 8px 26px rgba(249,115,22,.15);
+}
+.featured-glow:after {
+  content:"";
+  position:absolute; inset:-1px;
+  border-radius:inherit;
+  background: radial-gradient(600px 200px at 90% -20%, rgba(249,115,22,.09), transparent 60%);
+  pointer-events:none;
+}
+
+/* --- Timeline reveal animation --- */
+.timeline-item.reveal { opacity: 0; transform: translateY(10px); }
+.timeline-item.reveal.reveal-in {
+  opacity: 1; transform: translateY(0);
+  transition: opacity .35s ease, transform .35s ease, box-shadow .2s ease;
+}
+
+/* --- Sticky year readability in dark --- */
+:root[data-theme="dark"] .timeline-year { opacity: .85; }
+
+/* --- Filter pills active state (Bootstrap-ish) --- */
+.filter-pill.active {
+  color: #fff;
+  background: linear-gradient(90deg, var(--brand-1), var(--brand-2));
+  border-color: transparent;
 }
 
 
