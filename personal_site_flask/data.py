@@ -2,17 +2,42 @@
 
 AWARDS = [
     {
-        "title": "Judges' Award – Hack for the World",
-        "organization": "Naperville NorthHackathon",
-        "date": "March 2024",
-        "description": "Orbital Odysseys: An Intergalactic travel agency"
-    },
-    {
         "title": "2nd Place – Hack for the World",
         "organization": "Naperville North Hackathon",
         "date": "March 2025",
         "description": "Vendi: A website giving exposure to food trucks and local businesses"
     },
+    {
+        "title": "Judges' Award – Hack for the World",
+        "organization": "Naperville North Hackathon",
+        "date": "March 2024",
+        "description": "Orbital Odysseys: An Intergalactic travel agency"
+    },
+    {
+        "title": "Recognized on The Woodstock Independent for Navigo",
+        "organization": "The Woodstock Independent",
+        "date": "April 2025",
+    },
+    
+    {
+        "title": "Rural and Small-Town Recognition Award",
+        "organization": "College Board",
+        "date": "2024",
+    },
+    {
+        "title": "NHS President",
+        "organization": "National Honors Society",
+        "date": "2025",
+    },
+    {
+        "title": "National Recognition Program: School Recognition Award and First-Generation Award",
+        "organization": "College Board",
+        "date": "2025",
+    },
+    
+    
+    
+    
 ]
 
 TESTIMONIALS = [
@@ -26,11 +51,7 @@ TESTIMONIALS = [
         "role": "Computer Science Mentor",
         "quote": "What sets Krishna apart is his constant curiosity and drive to learn. He actively seeks new knowledge, asks insightful questions, and iterates with intention."
     },
-    {
-        "name": "John Liuzzi",
-        "role": "Vice Principal",
-        "quote": "NA"
-    },
+
     {
         "name": "Roopa Desai",
         "role": "Owner of Kumon North America at Carol Stream",
