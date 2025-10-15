@@ -338,6 +338,47 @@ video::-webkit-media-controls-volume-control-container {
   margin-top: -1px;
 }
 
+/* ===== Testimonial carousel sizing & wrapping ===== */
+:root { --tc-ctrl-w: 3.75rem; } /* wider side hit-area on sm+ so text never collides */
+
+#testimonialCarousel .carousel-item blockquote {
+  padding-left: var(--tc-ctrl-w);
+  padding-right: var(--tc-ctrl-w);
+}
+
+#testimonialCarousel blockquote p {
+  white-space: normal;
+  word-break: break-word;
+  overflow-wrap: anywhere;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+}
+
+#testimonialCarousel blockquote {
+  margin: 0 auto;
+  max-width: 42rem;
+}
+
+/* Overlay arrows (tablet/desktop) get the same wider width */
+#testimonialCarousel .carousel-control-prev,
+#testimonialCarousel .carousel-control-next {
+  width: var(--tc-ctrl-w);
+}
+
+/* On phones: no overlay arrows -> reduce padding so text is centered nicely */
+@media (max-width: 575.98px) {
+  #testimonialCarousel .carousel-item blockquote {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+}
+
+/* Optional: subtle spacing above mobile control bar */
+#testimonialCarousel .carousel-controls-mobile {
+  margin-top: .25rem;
+}
+
+
 /* ---- Utility tweaks ---- */
 .text-light-contrast { color: rgba(255,255,255,.9); }
 .lh-tight { line-height: 1.08; }
