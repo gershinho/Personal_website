@@ -12,8 +12,6 @@
   --ring: rgba(37, 99, 235, 0.25);
 }
 
-
-
 /* ---- Base & layout ---- */
 html, body {
   height: 100%;
@@ -61,8 +59,9 @@ footer { margin-top: auto; }
 
 /* ---- Hero & buttons ---- */
 .gradient-card {
-  background: var(--card); /* softer: white card */
-  color: var(--text);      /* dark text for readability */
+  position: relative;         /* ensure :before overlays correctly */
+  background: var(--card);    /* softer: white card */
+  color: var(--text);         /* dark text for readability */
   border: 1px solid rgba(0,0,0,.06);
   border-radius: 1.25rem;
   box-shadow: 0 4px 20px rgba(0,0,0,.05);
@@ -179,6 +178,43 @@ footer { margin-top: auto; }
 }
 .card blockquote { font-style: italic; }
 
+/* --- iOS-safe carousel/text wrapping for testimonials --- */
+#testimonialCarousel .carousel-item blockquote {
+  padding-left: 3rem;   /* space for prev arrow hit area */
+  padding-right: 3rem;  /* space for next arrow hit area */
+}
+
+#testimonialCarousel blockquote p {
+  white-space: normal;
+  word-break: break-word;   /* fallback */
+  overflow-wrap: anywhere;  /* modern */
+  hyphens: auto;
+  -webkit-hyphens: auto;    /* iOS Safari */
+}
+
+#testimonialCarousel blockquote {
+  margin: 0 auto;
+  max-width: 42rem;         /* keeps lines readable on tablets */
+}
+
+/* Slimmer arrow hit areas so they don't cover text */
+#testimonialCarousel .carousel-control-prev,
+#testimonialCarousel .carousel-control-next {
+  width: 2.5rem;            /* Bootstrap default is 15% */
+}
+
+@media (max-width: 576px) {
+  #testimonialCarousel .carousel-item blockquote {
+    padding-left: 2.25rem;
+    padding-right: 2.25rem;
+  }
+  #testimonialCarousel .carousel-control-prev,
+  #testimonialCarousel .carousel-control-next {
+    width: 2rem;
+  }
+}
+
+/* ---- Project gallery ---- */
 .project-gallery {
   padding: 0.001rem;  
   border-radius: .75rem;
@@ -203,7 +239,6 @@ footer { margin-top: auto; }
   color: inherit;
 }
 .link-underline:hover { background-size: 100% 2px; }
-
 
 /* Make carousel arrows black */
 .carousel-control-prev-icon,
@@ -288,7 +323,6 @@ video::-webkit-media-controls-volume-control-container {
   text-decoration: underline;
 }
 
-
 .press-mini {
   font-size: 0.75rem;
   border-color: rgba(0,0,0,.1);
@@ -303,7 +337,6 @@ video::-webkit-media-controls-volume-control-container {
 .press-mini svg {
   margin-top: -1px;
 }
-
 
 /* ---- Utility tweaks ---- */
 .text-light-contrast { color: rgba(255,255,255,.9); }
