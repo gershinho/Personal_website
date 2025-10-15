@@ -397,6 +397,49 @@ video::-webkit-media-controls-volume-control-container {
   border-color: transparent;
 }
 
+.spotify-strip {
+  background: rgba(37, 99, 235, 0.08);
+  border: 1px solid rgba(37, 99, 235, 0.2);
+  border-radius: 8px;
+  padding: 4px 10px;
+  font-weight: 500;
+  color: #1e3a8a;
+  max-width: 550px;
+  text-align: center;
+  line-height: 1.3;
+  margin-top: 0.25rem !important;
+  box-shadow: 0 1px 6px rgba(37, 99, 235, 0.08);
+  overflow: hidden;
+  position: relative;
+}
+
+.scroll-track {
+  width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.scroll-content {
+  display: inline-block;
+  white-space: nowrap;
+  animation: scrollText 22s linear infinite;
+  padding-right: 2rem; /* 👈 ensures natural spacing at the loop boundary */
+}
+
+@keyframes scrollText {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.spotify-strip a {
+  color: #2563eb;
+  text-decoration: none;
+}
+
+.spotify-strip a:hover {
+  text-decoration: underline;
+}
+
 
 /* ---- Utility tweaks ---- */
 .text-light-contrast { color: rgba(255,255,255,.9); }
