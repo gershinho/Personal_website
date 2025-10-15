@@ -59,10 +59,7 @@
 {% if tlist and tlist|length > 0 %}
 <section class="mt-5">
   <h2 class="mb-3">What Do People Say About Me?</h2>
-
-  <!-- Touch on, no auto-advance -->
-  <div id="testimonialCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-touch="true" data-bs-interval="false">
-
+  <div id="testimonialCarousel" class="carousel slide" data-bs-ride="carousel">
     <div class="carousel-inner">
       {% for t in tlist %}
       <div class="carousel-item {% if loop.first %}active{% endif %}">
@@ -73,24 +70,15 @@
       </div>
       {% endfor %}
     </div>
-
-    <!-- Desktop/tablet overlay arrows -->
-    <button class="carousel-control-prev d-none d-sm-flex" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="prev" aria-label="Previous">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <button class="carousel-control-prev" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon"></span>
       <span class="visually-hidden">Previous</span>
     </button>
-    <button class="carousel-control-next d-none d-sm-flex" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="next" aria-label="Next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <button class="carousel-control-next" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="next">
+      <span class="carousel-control-next-icon"></span>
       <span class="visually-hidden">Next</span>
     </button>
-
-    <!-- Mobile bottom controls (no overlay) -->
-    <div class="carousel-controls-mobile d-flex d-sm-none justify-content-center gap-3 mt-2">
-      <button class="btn btn-outline-dark btn-sm px-3" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="prev" aria-label="Previous">‹</button>
-      <button class="btn btn-outline-dark btn-sm px-3" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="next" aria-label="Next">›</button>
-    </div>
   </div>
-
   <div class="mt-3 text-center">
     <a href="/testimonials" class="btn btn-outline-dark btn-sm">See All Testimonials →</a>
   </div>
